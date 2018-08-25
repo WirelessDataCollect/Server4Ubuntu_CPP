@@ -5,21 +5,11 @@
  *      Author: songchaochao
  */
 
-#include <stdio.h>
-#include <sys/types.h>
-#include <sys/socket.h>
-#include <netinet/in.h>
-#include <unistd.h>
-#include <errno.h>
-#include <string.h>
-#include <stdlib.h>
-#include <iostream>
 #include "udp.h"
 
-using namespace std;
 UDP::UDP(int server_port)
 {
-	this->SERV_PORT = server_port;
+	this->SERV_PORT = server_port;//服务器端口
 	this->addr_serv_len = 0;//后面会更新
 	this->sock_fd = 0;//后面会更新
 
@@ -56,6 +46,7 @@ s32 UDP::udp_init()
 s32 UDP::udp_start()
 {
 	u32 recv_num;
+
 	while(1)
 	{
 		printf("server wait:\n");
@@ -79,17 +70,9 @@ s32 UDP::udp_start()
 
 UDP::~UDP()
 {
-	u32 i=0;
-	close(this->sock_fd);
-	delete &this->SERV_PORT;
-	delete &this->addr_serv_len;
-	delete &this->sock_fd;
-	for(i=0;i<RECV_BUF_NUM+1;i++)
+
+	if(&this->sock_fd)
 	{
-		delete &this->recv_buf[i];
+		close(this->sock_fd);
 	}
-	delete &addr_client;
-	delete &this->addr_serv;
-
-
 }

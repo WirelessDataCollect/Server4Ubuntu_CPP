@@ -17,6 +17,7 @@
 #include <string.h>
 #include <stdlib.h>
 
+
 #define u8 unsigned char
 #define u32 unsigned int
 #define s32 int
@@ -25,7 +26,6 @@
 #define UDP_INIT_ERROR 10
 #define UDP_STOPED	   11
 #define OK             1
-
 
 #define RECV_BUF_NUM 2000//存储一次的数据
 
@@ -44,6 +44,7 @@ private:
 	s32 sock_fd;//socket文件描述符
 	struct sockaddr_in addr_serv;//服务器的地址
 	struct sockaddr_in addr_client;//客户端的地址
+
 };
 
 
